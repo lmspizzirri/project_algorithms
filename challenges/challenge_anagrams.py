@@ -1,10 +1,11 @@
 def is_anagram(first_string, second_string):
-    first_string = first_string.lower()
-    second_string = second_string.lower()
+    first_string = first_string.replace(" ", "").lower()
+    second_string = second_string.replace(" ", "").lower()
 
-    first_string_sorted = ''.join(sorted(first_string))
-    second_string_sorted = ''.join(sorted(second_string))
+    if len(first_string) != len(second_string):
+        return (sorted(first_string), sorted(second_string), False)
 
-    anagram_check = first_string_sorted == second_string_sorted
-
-    return first_string_sorted, second_string_sorted, anagram_check
+    if sorted(first_string) == sorted(second_string):
+        return (sorted(first_string), sorted(second_string), True)
+    else:
+        return (sorted(first_string), sorted(second_string), False)
